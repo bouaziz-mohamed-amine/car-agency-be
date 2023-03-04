@@ -9,6 +9,8 @@ route.use(express.json())
 
 route.post("/",auth,carController.create);
 route.get("/:id",carController.find);
-
+route.get("/",carController.getAll);
+route.post("/:id",carController.update);
+route.delete("/:id",carController.deleteOne)
 
 module.exports=route
