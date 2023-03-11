@@ -1,12 +1,12 @@
-const car = require('../models/car')
+const brand = require('../models/brand')
 
 
 exports.create= async( req,res)=>{
 
    const data =req.body;
-    let newCar = new car({...data})
+    let newBrand = new brand({...data})
 
-     newCar.save().then(data=>{
+     newBrand.save().then(data=>{
         res.json(data)
      }).catch(err =>{
         res.json({error : " server  error"})
@@ -15,7 +15,7 @@ exports.create= async( req,res)=>{
     }
     
 exports.find=(req,res)=>{
-    car.findById(req.params.id)
+    brand.findById(req.params.id)
     .then(doc =>{
      res.json(doc)
     })
@@ -23,7 +23,7 @@ exports.find=(req,res)=>{
 
 exports.getAll = (req,res)=>{
    
-   car.find({}).populate('brand').then(data => {
+   brand.find({}).populate('cars').then(data => {
        res.json(data)    
    }).catch(err => {
        console.log("Cannot find activities", err);
@@ -34,14 +34,14 @@ exports.getAll = (req,res)=>{
 exports.update = (req,res)=>{
    var id = req.params.id;
    var newitem =req.body;
-   car.findByIdAndUpdate(id,newitem,{new: true}).then( data =>{
+   brand.findByIdAndUpdate(id,newitem,{new: true}).then( data =>{
        res.json(data);
    })
 }
 
 exports.deleteOne = (req,res)=>{
   
-   activity.deleteOne({_id : req.params.id}).then(data => {
+    brand.deleteOne({_id : req.params.id}).then(data => {
        res.json(data)    
    }).catch(err => {
        console.log("Cannot delete activity", err);

@@ -7,7 +7,7 @@ route.use(express.urlencoded({extended :true}))
 route.use(express.json())
 
 
-route.post("/",auth,carController.create);
+route.post("/",carController.create);
 route.get("/:id",carController.find);
 route.get("/",carController.getAll);
 route.post("/:id",carController.update);
