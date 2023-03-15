@@ -1,12 +1,11 @@
 const express = require('express')
 const route = express.Router()
-const controller = require('../controllers/brand.controller')
+const controller = require('../controllers/booking.controller')
 const auth = require('../middleware/auth')
 
 route.use(express.urlencoded({extended :true}))
 route.use(express.json())
 
-route.get("/cars",controller.getByBrands)
 route.post("/",controller.create);
 route.get("/:id",controller.find);
 route.get("/",controller.getAll);

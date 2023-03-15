@@ -48,4 +48,14 @@ exports.deleteOne = (req,res)=>{
    })
 }
 
+exports.getByBrands = (req,res)=>{
+    brand.find({name : {$in : ["ford"]} }).populate('cars').exec().then(data => {
+        const cars=data.flatMap(brand =>brand.cars)
+        res.json(cars)    
+    }).catch(err => {
+        console.log("Cannot find activities", err);
+    })
+ 
+ }
+
 

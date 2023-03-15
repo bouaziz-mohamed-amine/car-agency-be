@@ -9,13 +9,15 @@ mongoose.Promise = global.Promise;
 const userRoute=require('./routers/user.route')
 const carRoute=require('./routers/car.route')
 const brandRoute=require('./routers/brand.route')
+const bookingRoute=require('./routers/booking.route')
 
 
 app.use(cors())
 
-app.use('/user',userRoute)
+app.use('/users',userRoute)
 app.use('/cars',carRoute)
 app.use('/brands',brandRoute)
+app.use('/bookings',bookingRoute)
 
 
 
